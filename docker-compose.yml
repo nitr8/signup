@@ -1,0 +1,16 @@
+signup:
+  image: "whumphrey/docker-lamp"
+  ports:
+    - "2223:22"
+    - "88:80"
+    - "3307:3306"
+  volumes:
+    - ~/projects/signup:/var/www/html/
+  environment:
+    MYSQL_PASS: admin
+phpmyadmin:
+  image: "phpmyadmin/phpmyadmin"
+  ports:
+    - "89:80"
+  links:
+    - signup:db
